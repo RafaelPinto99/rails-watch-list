@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h2>Add a Bookmark to <%= @list.name %></h2>
+
+  <%= form_with(model: [@list, @bookmark], local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :movie_id, 'Select Movie' %>
+      <%= form.collection_select :movie_id, Movie.all, :id, :title, { prompt: 'Choose a Movie' }, class: 'form-control' %>
+    </div>
+
+    <%= form.submit 'Add Bookmark', class: 'btn btn-primary' %>
+  <% end %>
+
+  <%= link_to 'Back to List', list_path(@list), class: 'btn btn-outline-secondary mt-3' %>
+</div>

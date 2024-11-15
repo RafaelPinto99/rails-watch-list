@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Create a New Movie List</h3>
+        </div>
+        <div class="card-body">
+          <%= form_with model: @list, local: true do |form| %>
+            <% if @list.errors.any? %>
+              <div class="alert alert-danger">
+                <ul>
+                  <% @list.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= form.label :name, 'List Name', class: 'font-weight-bold' %>
+              <%= form.text_field :name, class: 'form-control form-control-lg', placeholder: 'Enter list name', required: true %>
+            </div>
+
+            <div class="form-group text-center mt-4">
+              <%= form.submit 'Create List', class: 'btn btn-success btn-lg w-100' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
